@@ -1,0 +1,31 @@
+﻿@*@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                A tool to upload very large files to Azure Blob Storage.
+            </p>
+        </div>
+    </section>
+}*@
+
+@if((string)Session["username"] == "KinectAdmin")
+{
+    
+    <h3>Uploaded Files</h3>
+    <ul>
+        @foreach (var item in Model.Files)
+        {
+            <li>
+                <a href="@item.URL">@item.FileName</a> (@item.Size bytes)
+            </li>
+        }
+    </ul>
+    @Html.ActionLink("Upload Another File", "UploadFile")
+}
+else { 
+    <h1>Log in as admin to view files</h1>
+}

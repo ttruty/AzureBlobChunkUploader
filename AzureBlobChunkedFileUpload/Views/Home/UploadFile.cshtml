@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Upload";
+}
+
+@if (Session["username"] != null)
+{
+    <h3>Uploading as: @Session["username"].ToString()</h3>
+    <h1>Upload Kinect Files</h1>
+
+    <input type="file" id="selectFile" name="selectFile" />
+    <input type="submit" name="fileUpload" id="fileUpload" value="Upload" />
+    <br />
+    <div id="progressBar" style="width:50%; height:20px; background-color:grey"></div>
+    <br />
+    <bold><label id="statusMessage"></label></bold>
+
+    @section Scripts{
+        <script src="~/Scripts/chunked-uploader.js"></script>
+    }
+}
+else
+{
+    <h1>Log in to upload a file</h1>
+}
